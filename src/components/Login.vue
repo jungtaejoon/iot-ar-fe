@@ -50,7 +50,7 @@ export default {
       }).then(({status, ...rest}) => {
         if (status === 200) {
           this.$store.commit(types.LOGIN_SUCCESS)
-          this.$router.push('/members')
+          this.$router.push('/admin/members')
         } else {
           console.log(status, rest)
           swal('오류', '로그인 과정에서 오류가 발생했습니다.', 'error')
@@ -67,7 +67,3 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style src="../assets/css/animate.css"></style>
-<style src="../assets/css/style.css"></style>

@@ -16,3 +16,5 @@ export default {
 </script>
 <style src="./vendors/bootstrap/dist/css/bootstrap.min.css"></style>
 <style src="./vendors/font-awesome/css/font-awesome.min.css"></style>
+<style src="./assets/css/animate.css"></style>
+<style src="./assets/css/style.css"></style>

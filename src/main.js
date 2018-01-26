@@ -7,10 +7,12 @@ import store from './store/store'
 import types from './store/mutation-type'
 import axios from 'axios'
 import VueCookie from 'vue-cookie'
+import vbclass from 'vue-body-class'
 
 Vue.config.productionTip = false
 axios.defaults.withCredentials = true
 Vue.use(VueCookie)
+Vue.use(vbclass, router)
 
 router.beforeEach((to, from, next) => {
   store.commit(types.ROUTE_CHANGE, 'start')
@@ -20,6 +22,11 @@ router.beforeEach((to, from, next) => {
 router.afterEach((to, from) => {
   document.title = to.meta.title
   store.commit(types.ROUTE_CHANGE, 'end')
+  if (window.innerWidth < 992) {
+    store.commit(types.LEFT_SIDE, false)
+  } else {
+    store.commit(types.LEFT_SIDE, true)
+  }
 })
 /* eslint-disable no-new */
 new Vue({

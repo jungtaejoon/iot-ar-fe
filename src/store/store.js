@@ -15,7 +15,7 @@ export default new Vuex.Store({
       name: '',
       memberRole: ''
     },
-    left_open: true
+    leftOpen: true
   },
   mutations: {
     [types.ROUTE_CHANGE] (state, loader) {
@@ -34,6 +34,12 @@ export default new Vuex.Store({
     },
     [types.LOGOUT] (state) {
       state.isLoggedIn = false
+    },
+    [types.TOGGLE_LEFT_SIDE] (state) {
+      state.leftOpen = !state.leftOpen
+    },
+    [types.LEFT_SIDE] (state, value) {
+      state.leftOpen = value
     }
   },
   actions: {
