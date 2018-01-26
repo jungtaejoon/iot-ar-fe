@@ -1,0 +1,17 @@
+.ui-autocomplete {
+    background: white;
+    border-radius: 0px;
+}
+.ui-autocomplete.source:hover {
+    background: whitesmoke;
+}
+
+form ul {
+    padding: 6px;
+}
+
+form ul li {
+    list-style-type: none;
+    font-size:12pt;
+    padding: 3px;
+}

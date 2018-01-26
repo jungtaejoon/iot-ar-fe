@@ -1,0 +1,53 @@
+body{
+    background : linear-gradient( to right, #3E4E6D, #1B2B49 );
+}
+
+input#loginPwd {
+    background: linear-gradient( to right, #324360, #1F304D ); border:none;
+    /*background-image: url(../assets/pwd.png);
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+    text-indent: 25px;*/
+}
+
+input#loginId {
+    background: linear-gradient( to right, #324360, #1F304D ); border:none;
+    /*background-image: url(../assets/id.png);
+    background-repeat: no-repeat;
+    background-position: 0 30px 0 0;
+    text-indent: 25px;*/
+}
+
+#loginPwd:focus, #loginId:focus{ background: linear-gradient( to right, #324360, #1F304D ); border:none; }
+
+.form-group{
+    text-align: center;
+}
+
+.wrap-form input {
+    height: 40px;
+    border-radius: 5px;
+    font-size: 1.5em;
+    text-align: center;
+}
+.wrap-form button {
+    height: 45px;
+    font-size: 1.5em !important;
+    border-radius: 25px;
+}
+.wrap-form div { margin-top : 30px; }
+#loginPwd{ margin-top: 40px; }
+
+@media (min-height: 500px) {
+    .wrap-form div {
+        margin-top : 70px;
+    }
+    .wrap-form div button {
+        height: 50px;
+        margin-top : 50px;
+    }
+}
+
+
+
+
