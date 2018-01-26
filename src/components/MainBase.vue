@@ -28,7 +28,7 @@ export default {
     window.removeEventListener('resize', this.handleResize)
   },
   methods: {
-    handleResize (e) {
+    handleResize () {
       window.innerWidth < 769 ? document.body.classList.add('body-small') : document.body.classList.remove('body-small')
     }
   }

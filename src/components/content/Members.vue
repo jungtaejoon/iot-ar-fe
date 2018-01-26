@@ -25,7 +25,10 @@
 </template>
 
 <script>
+import {apiPath} from './content-meta'
+
 export default {
+
 }
 </script>
 
