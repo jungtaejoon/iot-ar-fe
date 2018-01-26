@@ -6,11 +6,15 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+  linkActiveClass: 'active',
   routes: [
     {
       path: '/',
       name: 'Login',
-      component: Login
+      component: Login,
+      meta: {
+        title: 'KEPCO 관리자 페이지 로그인'
+      }
     }
   ]
 })

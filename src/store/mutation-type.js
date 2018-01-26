@@ -1,0 +1,6 @@
+export default {
+  ROUTE_CHANGE: 'ROUTE_CHANGE',
+  LOGIN: 'LOGIN',
+  LOGIN_SUCCESS: 'LOGIN_SUCCESS',
+  LOGOUT: 'LOGOUT'
+}
