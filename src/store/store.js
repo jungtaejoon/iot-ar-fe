@@ -15,7 +15,8 @@ export default new Vuex.Store({
       name: '',
       memberRole: ''
     },
-    leftOpen: true
+    leftOpen: true,
+    currentPageMeta: {}
   },
   mutations: {
     [types.ROUTE_CHANGE] (state, loader) {
@@ -40,6 +41,9 @@ export default new Vuex.Store({
     },
     [types.LEFT_SIDE] (state, value) {
       state.leftOpen = value
+    },
+    [types.SET_CURRENT_PAGE_META] (state, value) {
+      state.currentPageMeta = value
     }
   },
   actions: {
@@ -48,7 +52,6 @@ export default new Vuex.Store({
       return axios.post('http://localhost:8081/login', creds)
     },
     logout ({ commit }) {
-      localStorage.removeItem('token')
       commit(types.LOGOUT)
     }
   }

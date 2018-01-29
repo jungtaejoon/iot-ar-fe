@@ -2,11 +2,16 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/Login'
 import MainBase from '@/components/MainBase'
-import Members from '@/components/content/Members'
-import Facilities from '@/components/content/Facilities'
+import MembersDatatable from '@/components/datatable/MembersDatatable'
+import FacilitiesDatatable from '@/components/datatable/FacilitiesDatatable'
 import NotFound from '@/components/NotFound'
 
 Vue.use(Router)
+
+const datatableCommonMeta = {
+  bodyClass: 'fixed-sidebar pace-done',
+  title: 'KEPCO 관리자 페이지'
+}
 
 export default new Router({
   mode: 'history',
@@ -26,19 +31,13 @@ export default new Router({
       children: [
         {
           path: 'members',
-          component: Members,
-          meta: {
-            bodyClass: 'fixed-sidebar pace-done',
-            title: 'KEPCO 관리자 페이지'
-          }
+          component: MembersDatatable,
+          meta: datatableCommonMeta
         },
         {
           path: 'facilities',
-          component: Facilities,
-          meta: {
-            bodyClass: 'fixed-sidebar pace-done',
-            title: 'KEPCO 관리자 페이지'
-          }
+          component: FacilitiesDatatable,
+          meta: datatableCommonMeta
         }
       ]
     },
