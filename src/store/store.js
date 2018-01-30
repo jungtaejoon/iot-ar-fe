@@ -61,7 +61,7 @@ export default new Vuex.Store({
   actions: {
     login ({ commit }, creds) {
       commit(types.LOGIN)
-      return axios.post('http://localhost:8081/login', creds)
+      return axios.post('/login', creds)
     }
   }
 })

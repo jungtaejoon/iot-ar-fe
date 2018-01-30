@@ -13,10 +13,7 @@
             </div>
           </div>
           <div class="ibox-content">
-            <div id="mainTable" class="table-responsive">
-              <table class="datatable table" width="100%">
-              </table>
-            </div>
+            <router-view></router-view>
           </div>
         </div>
       </div>

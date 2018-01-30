@@ -4,6 +4,7 @@ import Login from '@/components/Login'
 import MainBase from '@/components/MainBase'
 import MembersDatatable from '@/components/datatable/MembersDatatable'
 import FacilitiesDatatable from '@/components/datatable/FacilitiesDatatable'
+import DatatableContainer from '@/components/datatable/DatatableContainer'
 import NotFound from '@/components/NotFound'
 
 Vue.use(Router)
@@ -32,14 +33,20 @@ export default new Router({
       component: MainBase,
       children: [
         {
-          path: 'members',
-          component: MembersDatatable,
-          meta: datatableCommonMeta
-        },
-        {
-          path: 'facilities',
-          component: FacilitiesDatatable,
-          meta: datatableCommonMeta
+          path: '',
+          component: DatatableContainer,
+          children: [
+            {
+              path: 'members',
+              component: MembersDatatable,
+              meta: datatableCommonMeta
+            },
+            {
+              path: 'facilities',
+              component: FacilitiesDatatable,
+              meta: datatableCommonMeta
+            }
+          ]
         }
       ]
     },

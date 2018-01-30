@@ -14,6 +14,7 @@ import Datatable from 'vue2-datatable-component'
 
 Vue.config.productionTip = false
 axios.defaults.withCredentials = true
+axios.defaults.baseURL = 'http://localhost:8081'
 Vue.use(VueCookie)
 Vue.use(vbclass, router)
 Vue.use(Datatable)

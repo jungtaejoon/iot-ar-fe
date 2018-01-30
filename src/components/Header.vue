@@ -32,7 +32,7 @@ import JWTDecode from 'jwt-decode'
 
 export default {
   created () {
-    axios.get('http://localhost:8081/api/members/' + this.$cookie.get('loginMemberId')).then(({data}) => (this.loggedInMember = data))
+    axios.get('/api/members/' + this.$cookie.get('loginMemberId')).then(({data}) => (this.loggedInMember = data))
   },
   data () {
     return {
