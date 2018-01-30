@@ -59,10 +59,6 @@ export default {
         console.log(response, rest)
         swal('HTTP Status Code: ' + response.data.status, response.data.message, 'error')
       })
-    },
-    logout () {
-      this.$cookie.delete('JWTAuth')
-      this.$store.commit(types.LOGOUT)
     }
   }
 }

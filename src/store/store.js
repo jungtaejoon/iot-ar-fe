@@ -2,12 +2,13 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import types from './mutation-type'
 import axios from 'axios'
+import VueCookie from 'vue-cookie'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isLoggedIn: !!localStorage.getItem('token'),
+    isLoggedIn: !!VueCookie.get('JWTAuth'),
     preloader: true,
     connectedUser: {
       username: '',

@@ -20,7 +20,11 @@ Vue.use(Datatable)
 
 router.beforeEach((to, from, next) => {
   store.commit(types.ROUTE_CHANGE, 'start')
-  next()
+  if (to.matched.some(record => record.meta.requiresAuth) && !store.state.isLoggedIn) {
+    next({ path: '/login', query: { redirect: to.fullPath }})
+  } else {
+    next()
+  }
 })
 
 router.afterEach((to, from) => {

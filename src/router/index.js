@@ -10,7 +10,8 @@ Vue.use(Router)
 
 const datatableCommonMeta = {
   bodyClass: 'fixed-sidebar pace-done',
-  title: 'KEPCO 관리자 페이지'
+  title: 'KEPCO 관리자 페이지',
+  requiresAuth: true
 }
 
 export default new Router({
@@ -19,6 +20,7 @@ export default new Router({
   routes: [
     {
       path: '/',
+      alias: '/login',
       component: Login,
       meta: {
         bodyClass: 'gray-bg',
