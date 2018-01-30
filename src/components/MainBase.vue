@@ -16,10 +16,19 @@
 import LeftSide from './LeftSide'
 import CommonHeader from './Header'
 import CommonFooter from './Footer'
+import types from '../store/mutation-type'
 
 export default {
   components: {
     LeftSide, CommonHeader, CommonFooter
+  },
+  computed: {
+    isLoggedIn () {
+      return this.$store.state.isLoggedIn
+    }
+  },
+  created () {
+    this.$store.commit(types.SET_REFRESH_INTERVAL, setInterval(this.$store.commit.bind(null, types.REFRESH_LOGIN_STATE), 1000))
   },
   mounted () {
     window.addEventListener('resize', this.handleResize)
@@ -30,6 +39,15 @@ export default {
   methods: {
     handleResize () {
       window.innerWidth < 769 ? document.body.classList.add('body-small') : document.body.classList.remove('body-small')
+    }
+  },
+  watch: {
+    isLoggedIn: {
+      handler (isLoggedIn) {
+        if (!isLoggedIn) {
+          this.$router.push('/')
+        }
+      }
     }
   }
 }

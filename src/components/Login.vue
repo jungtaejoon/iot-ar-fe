@@ -21,14 +21,13 @@
         </form>
       </div>
       <p class="m-t"> <small>한국전력공사 강원지역본부 KEPCO &copy; 2017</small> </p>
-      <a v-if="isLoggedIn" @click="logout">logout</a>
     </div>
   </div>
 </template>
 
 <script>
-import types from '../store/mutation-type'
 import swal from 'sweetalert2'
+import types from '../store/mutation-type'
 
 export default {
   data () {
@@ -49,7 +48,7 @@ export default {
         password: this.password
       }).then(({status, ...rest}) => {
         if (status === 200) {
-          this.$store.commit(types.LOGIN_SUCCESS)
+          this.$store.commit(types.REFRESH_LOGIN_STATE)
           this.$router.push('/admin/members')
         } else {
           console.log(status, rest)

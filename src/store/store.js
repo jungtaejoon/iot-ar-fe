@@ -2,13 +2,17 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import types from './mutation-type'
 import axios from 'axios'
-import VueCookie from 'vue-cookie'
+import VueJWT from 'vuejs-jwt'
+import JWTDecode from 'jwt-decode'
 
 Vue.use(Vuex)
+Vue.use(VueJWT, {storage: 'cookie', keyName: 'JWTAuth'})
 
 export default new Vuex.Store({
   state: {
-    isLoggedIn: !!VueCookie.get('JWTAuth'),
+    isLoggedIn: !!Vue.$jwt.getToken() && JWTDecode(Vue.$jwt.getToken()).exp * 1000 - new Date().getTime() > 0,
+    sessionRemainTime: 0,
+    refreshInterval: {},
     preloader: true,
     connectedUser: {
       username: '',
@@ -30,8 +34,9 @@ export default new Vuex.Store({
     [types.LOGIN] (state) {
       state.pending = true
     },
-    [types.LOGIN_SUCCESS] (state) {
-      state.isLoggedIn = true
+    [types.REFRESH_LOGIN_STATE] (state) {
+      state.sessionRemainTime = JWTDecode(Vue.$jwt.getToken()).exp * 1000 - new Date().getTime()
+      state.isLoggedIn = state.sessionRemainTime > 0
       state.pending = false
     },
     [types.LOGOUT] (state) {
@@ -45,15 +50,18 @@ export default new Vuex.Store({
     },
     [types.SET_CURRENT_PAGE_META] (state, value) {
       state.currentPageMeta = value
+    },
+    [types.SET_REFRESH_INTERVAL] (state, value) {
+      state.refreshInterval = value
+    },
+    [types.CLEAR_REFRESH_INTERVAL] (state) {
+      clearInterval(state.refreshInterval)
     }
   },
   actions: {
     login ({ commit }, creds) {
       commit(types.LOGIN)
       return axios.post('http://localhost:8081/login', creds)
-    },
-    logout ({ commit }) {
-      commit(types.LOGOUT)
     }
   }
 })
