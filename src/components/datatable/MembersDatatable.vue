@@ -5,15 +5,19 @@
 <script>
 import axios from 'axios'
 import {queryConverter} from './query-handler-support'
+import ActionButton from './comp/ActionButton'
 
 export default {
+  components: {
+    ActionButton
+  },
   data: () => ({
     columns: [
       { title: '사용자 ID', field: 'username', sortable: true },
       { title: '이름', field: 'name', sortable: true },
-      { title: '권한', field: 'memberRole', sortable: true },
+      { title: '권한', field: 'memberRole', tdClass: 'center', sortable: true },
       { title: '휴대전화', field: 'phoneNumber', sortable: true },
-      { title: 'ACTION', tdComp: 'ActionButton', visible: true }
+      { title: 'ACTION', tdComp: 'ActionButton', tdClass: 'center width84', visible: true }
     ],
     data: [],
     total: 0,

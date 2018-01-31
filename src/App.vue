@@ -11,10 +11,12 @@ import Preloader from './components/Preloader'
 export default {
   components: {
     Preloader
+  },
+  mounted () {
+
   }
 }
 </script>
-<style src="./vendors/bootstrap/dist/css/bootstrap.min.css"></style>
+<style lang="scss" src="./assets/sass/bootstrap/bootstrap.scss"></style>
 <style src="./vendors/font-awesome/css/font-awesome.min.css"></style>
-<style src="./assets/css/animate.css"></style>
-<style src="./assets/css/style.css"></style>
+<style src="./vendors/themify-icons/css/themify-icons.css"></style>

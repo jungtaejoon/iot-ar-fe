@@ -10,9 +10,9 @@ import NotFound from '@/components/NotFound'
 Vue.use(Router)
 
 const datatableCommonMeta = {
-  bodyClass: 'fixed-sidebar pace-done',
   title: 'KEPCO 관리자 페이지',
-  requiresAuth: true
+  requiresAuth: true,
+  listTitle: ''
 }
 
 export default new Router({
@@ -39,12 +39,12 @@ export default new Router({
             {
               path: 'members',
               component: MembersDatatable,
-              meta: datatableCommonMeta
+              meta: {...datatableCommonMeta, listTitle: '사원'}
             },
             {
               path: 'facilities',
               component: FacilitiesDatatable,
-              meta: datatableCommonMeta
+              meta: {...datatableCommonMeta, listTitle: '설비'}
             }
           ]
         }

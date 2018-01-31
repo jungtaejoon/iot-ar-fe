@@ -32,12 +32,10 @@ export default new Vuex.Store({
       }
     },
     [types.LOGIN] (state) {
-      state.pending = true
     },
     [types.REFRESH_LOGIN_STATE] (state) {
       state.sessionRemainTime = JWTDecode(Vue.$jwt.getToken()).exp * 1000 - new Date().getTime()
       state.isLoggedIn = state.sessionRemainTime > 0
-      state.pending = false
     },
     [types.LOGOUT] (state) {
       state.isLoggedIn = false

@@ -18,7 +18,7 @@ body.full-height-layout #page-wrapper {
   min-height: auto;
 }
 body.boxed-layout {
-  background: url('patterns/shattered.png');
+  background: url('../img/patterns/shattered.png');
 }
 body.boxed-layout #wrapper {
   background-color: #2f4050;

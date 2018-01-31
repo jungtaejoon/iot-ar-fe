@@ -48,7 +48,12 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('node_modules/webpack-dev-server/'), resolve('node_modules/vue2-datatable-component')]
+        include: [
+          resolve('src'),
+          resolve('node_modules/webpack-dev-server/'),
+          resolve('node_modules/vue2-datatable-component'),
+          require.resolve("bootstrap-vue")
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

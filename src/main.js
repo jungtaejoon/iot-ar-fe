@@ -11,6 +11,8 @@ import axios from 'axios'
 import VueCookie from 'vue-cookie'
 import vbclass from 'vue-body-class'
 import Datatable from 'vue2-datatable-component'
+import BootstrapVue from 'bootstrap-vue'
+import 'babel-polyfill'
 
 Vue.config.productionTip = false
 axios.defaults.withCredentials = true
@@ -18,6 +20,7 @@ axios.defaults.baseURL = 'http://localhost:8081'
 Vue.use(VueCookie)
 Vue.use(vbclass, router)
 Vue.use(Datatable)
+Vue.use(BootstrapVue)
 
 router.beforeEach((to, from, next) => {
   store.commit(types.ROUTE_CHANGE, 'start')
