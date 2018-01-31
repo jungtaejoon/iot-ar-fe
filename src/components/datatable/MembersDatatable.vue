@@ -6,21 +6,22 @@
 import axios from 'axios'
 import {queryConverter} from './query-handler-support'
 import ActionButton from './comp/ActionButton'
+import {commonProperties} from './commonProperties'
+import Filter from './comp/Filter'
 
 export default {
   components: {
-    ActionButton
+    ActionButton, Filter
   },
   data: () => ({
+    ...commonProperties,
     columns: [
       { title: '사용자 ID', field: 'username', sortable: true },
       { title: '이름', field: 'name', sortable: true },
       { title: '권한', field: 'memberRole', tdClass: 'center', sortable: true },
-      { title: '휴대전화', field: 'phoneNumber', sortable: true },
+      { title: '휴대전화', field: 'phoneNumber', sortable: true, thComp: 'Filter' },
       { title: 'ACTION', tdComp: 'ActionButton', tdClass: 'center width84', visible: true }
     ],
-    data: [],
-    total: 0,
     query: {limit: 20, sort: 'username'},
     apiPath: '/api/members/pageable'
   }),

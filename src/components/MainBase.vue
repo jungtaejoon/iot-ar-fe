@@ -2,23 +2,10 @@
   <div>
     <div class="wrapper">
       <left-side></left-side>
-      <right-side>
-        <router-view></router-view>
-        <b-card>
-          <h4>Background Primary Modal </h4>
-          <b-btn v-b-modal.modal8>Primary modal</b-btn>
-          <!-- Modal Component -->
-          <b-modal id="modal8" title="Priamry Modal"
-                   header-bg-variant="primary"
-                   header-text-variant="light"
-                   footer-bg-variant="primary"
-                   footer-text-variant="light"
-                   size="md">
-            <h1> Primary modal</h1>
-          </b-modal>
-        </b-card>
-        <common-footer></common-footer>
-      </right-side>
+        <right-side>
+          <router-view></router-view>
+          <common-footer></common-footer>
+        </right-side>
     </div>
     <div class="background-overlay"></div>
   </div>

@@ -5,17 +5,17 @@
 <script>
 import axios from 'axios'
 import {queryConverter} from './query-handler-support'
+import {commonProperties} from './commonProperties'
 
 export default {
   data: () => ({
+    ...commonProperties,
     columns: [
       { title: '고유번호', field: 'serialNumber', sortable: true },
       { title: '종류', field: 'type', sortable: true },
       { title: '담당자ID', field: 'inspector-username', sortable: true },
       { title: '사업소코드', field: 'businessCode', sortable: true }
     ],
-    data: [],
-    total: 0,
     query: {limit: 20, sort: 'serialNumber'},
     apiPath: '/api/facilities/pageable'
   }),
