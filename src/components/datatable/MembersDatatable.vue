@@ -3,27 +3,27 @@
     <!-- User Interface controls -->
     <b-row>
       <b-col md="6" class="my-1">
-        <b-form-group horizontal label="Filter" class="mb-0">
+        <b-form-group horizontal label="검색" class="mb-0">
           <b-input-group>
             <b-form-input v-model="filter" placeholder="Type to Search"/>
-            <b-input-group-button>
+            <b-input-group-append>
               <b-btn :disabled="!filter" @click="filter = ''">Clear</b-btn>
-            </b-input-group-button>
+            </b-input-group-append>
           </b-input-group>
         </b-form-group>
       </b-col>
       <b-col md="6" class="my-1">
-        <b-form-group horizontal label="Sort" class="mb-0">
+        <b-form-group horizontal label="정렬" class="mb-0">
           <b-input-group>
             <b-form-select v-model="sortBy" :options="sortOptions">
               <option slot="first" :value="null">-- none --</option>
             </b-form-select>
-            <b-input-group-button>
+            <b-input-group-append>
               <b-form-select :disabled="!sortBy" v-model="sortDesc">
                 <option :value="false">Asc</option>
                 <option :value="true">Desc</option>
               </b-form-select>
-            </b-input-group-button>
+            </b-input-group-append>
           </b-input-group>
         </b-form-group>
       </b-col>
@@ -31,7 +31,7 @@
         <b-pagination :total-rows="totalRows" :per-page="perPage" v-model="currentPage" class="my-0"/>
       </b-col>
       <b-col md="6" class="my-1">
-        <b-form-group horizontal label="Per page" class="mb-0">
+        <b-form-group horizontal label="행 수" class="mb-0">
           <b-form-select :options="pageOptions" v-model="perPage"/>
         </b-form-group>
       </b-col>
@@ -47,9 +47,7 @@
              :sort-desc.sync="sortDesc"
              @filtered="onFiltered"
     >
-      <template slot="name" slot-scope="row">{{row.value.first}} {{row.value.last}}</template>
-      <template slot="isActive" slot-scope="row">{{row.value?'Yes :)':'No :('}}</template>
-      <template slot="actions" slot-scope="row">
+      <template slot="action" slot-scope="row">
         <!-- We use @click.stop here to prevent a 'row-clicked' event from also happening -->
         <b-button size="sm" @click.stop="info(row.item, row.index, $event.target)" class="mr-1">
           Info modal
@@ -81,20 +79,20 @@ import { contextConverter } from './table-rows-context-converter'
 const API_PATH = '/api/members/pageable'
 
 export default {
-  name: 'MembersDatatable',
   data: () => ({
     fields: [
       {label: '사용자 ID', key: 'username', sortable: true},
       {label: '이름', key: 'name', sortable: true},
       {label: '권한', key: 'memberRole', class: 'center', sortable: true},
       {label: '휴대전화', key: 'phoneNumber', sortable: true},
-      {label: 'ACTION', key: 'action', class: 'center width84'}
+      {label: 'ACTION', key: 'action'}
     ],
     currentPage: 1,
-    perPage: 5,
+    perPage: 20,
     totalRows: 0,
-    pageOptions: [5, 10, 15],
-    sortBy: 'username',
+    pageOptions: [20, 50, 100],
+    defaultSortBy: 'username',
+    sortBy: null,
     sortDesc: false,
     filter: null,
     modalInfo: {title: '', content: ''}
@@ -123,7 +121,7 @@ export default {
       this.currentPage = 1
     },
     itemsProvider (ctx) {
-      axios.get(API_PATH + '?' + contextConverter(ctx)).then(({data}) => {
+      return axios.get(API_PATH + '?' + contextConverter(ctx, this.defaultSortBy)).then(({data}) => {
         this.totalRows = data.total
         return data.list
       })
